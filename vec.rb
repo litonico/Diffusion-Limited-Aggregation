@@ -80,36 +80,3 @@ class Vec2
 end
 
 ORIGIN = Vec2.new 0.0, 0.0
-
-class Particle
-  attr_accessor :velocity, :position, :age
-  alias pos position
-
-  def initialize pos=ORIGIN, vel=ORIGIN
-    @position = pos
-    @velocity = vel
-    @age = 0
-  end
-
-  def step
-    @position += @velocity
-
-    if position.x > 500
-      position.x = position.x % 500
-    elsif position.x < 0
-      position.x = 500 - position.x
-    end
-
-    if position.y > 500
-      position.y = position.y % 500
-    elsif position.y < 0
-      position.y = 500 - position.y
-    end
-
-    self
-  end
-
-  def distance_from other
-    (other.position - self.position).magnitude
-  end
-end
